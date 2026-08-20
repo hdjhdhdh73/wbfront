@@ -98,7 +98,9 @@ export function CartPage() {
             <span className={styles.itemTotal}>= {item.total_price} руб.</span>
 
             <div className={styles.quantityButtons}>
+              <button className={styles.quantityButton} onClick={() => handleQuantity(item.id, -1)}>-</button>
               <span className={styles.quantityValue}>{item.quantity}</span>
+              <button className={styles.quantityButton} onClick={() => handleQuantity(item.id, 1)}>+</button>
             </div>
 
             <button className={styles.deleteButton} onClick={() => handleRemove(item.id)}>Удалить</button>
