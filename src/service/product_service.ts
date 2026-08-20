@@ -39,18 +39,6 @@ export async function createProduct(data: ProductCreate): Promise<Product> {
     const product: Product = await result.json(); 
     return product; 
 }
-export async function updateProduct(product_id: number, data: Partial<ProductCreate>): Promise<Product> { 
-    const result = await fetch(`/api/products/${product_id}`, { 
-        method: "PUT",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(data) 
-    }); 
-    if (!result.ok) { 
-        const error = await result.json(); 
-        throw new Error(error.detail || "Ошибка обновления товара"); } 
-    const product: Product = await result.json(); 
-    return product;
-}
 export async function deleteProduct(product_id: number): Promise<void> { 
     const result = await fetch(`/api/products/${product_id}`, { 
         method: "DELETE" }); 
@@ -58,3 +46,4 @@ export async function deleteProduct(product_id: number): Promise<void> {
         const error = await result.json(); 
         throw new Error(error.detail || "Ошибка удаления товара"); } 
 }
+

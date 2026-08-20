@@ -29,12 +29,4 @@ export async function removeFromCart(item_id: number, user_id: number): Promise<
         const error = await result.json(); 
         throw new Error(error.detail || "Ошибка удаления из корзины"); } 
 }
-export async function updateCartItem(item_id: number, user_id: number, quantity: number): Promise<CartItem> { 
-    const result = await fetch(`/api/cart/items/${item_id}?cart_id=${item_id}&user_id=${user_id}&quantity=${quantity}`, { 
-        method: "PATCH" });
-    if (!result.ok) { 
-        const error = await result.json(); 
-        throw new Error(error.detail || "Ошибка обновления количества"); } 
-    const cart_item: CartItem = await result.json();
-    return cart_item; 
-}
+
