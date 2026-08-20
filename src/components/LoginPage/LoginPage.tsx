@@ -22,7 +22,7 @@ export function LoginPage() {
         if (user_data.role) {
            localStorage.setItem("userRole", user_data.role); 
           }
-        navigate("/");
+        navigate("/catalog");
       })
       .catch((error) => {
         setError(error.message || "Ошибка входа");

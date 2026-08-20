@@ -12,6 +12,7 @@ export function AdminPage() {
   const [name, setName] = useState("");
   const [price, setPrice] = useState("");
   const [description, setDescription] = useState("");
+  const [imageUrl, setImageUrl] = useState("");
   const [cat_name, setCat_name] = useState("");
   const [selected_cat, setSelected_cat] = useState("");
   const navigate = useNavigate();
@@ -27,13 +28,14 @@ export function AdminPage() {
   }, [navigate]);
 
   const handleSave = () => {
-    const data = { name, price: Number(price), description, category_id: Number(selected_cat) };
+    const data = { name, price: Number(price), description, category_id: Number(selected_cat), image_url: imageUrl };
     createProduct(data).then((new_product) => {
       setProducts((list) => [...list, new_product]);
     });
     setName("");
     setPrice("");
     setDescription("");
+    setImageUrl("");
   };
 
   const handleDelete = (id: number) => {
@@ -61,6 +63,7 @@ export function AdminPage() {
       <input type="text" placeholder="Название" value={name} onChange={(event) => setName(event.target.value)} />
       <input type="number" placeholder="Цена" value={price} onChange={(event) => setPrice(event.target.value)} />
       <textarea placeholder="Описание" value={description} onChange={(event) => setDescription(event.target.value)} />
+      <input type="text" placeholder="URL картинки" value={imageUrl} onChange={(event) => setImageUrl(event.target.value)} />
       <select value={selected_cat} onChange={(event) => setSelected_cat(event.target.value)}>
         <option value="">Выберите категорию</option>
         {categories.map((cat) => <option key={cat.id} value={cat.id}>{cat.name}</option>)}

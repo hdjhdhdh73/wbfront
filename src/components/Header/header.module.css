@@ -35,12 +35,14 @@
 .cartLink {
   color: white;
   text-decoration: none;
-  display: flex;
+  display: inline-flex;
   align-items: center;
-  gap: 1%;
-  font-size :25px;
+  gap: 8px;
+  font-size: 16px;
   font-weight: bold;
-  margin-left:auto;
+  background: transparent;
+  cursor: pointer;
+  vertical-align: middle;
 }
 
 
@@ -48,12 +50,16 @@
   color: white;
   text-decoration: none;
   border: none;
-  padding:2% 14px;
-  background: none;
+  padding: 8px 16px;
+  background: transparent;
   cursor: pointer;
-  border-radius: 4px;
+  border-radius: 6px;
   font-size: 14px;
-  
+  transition: all 0.2s;
+  display: inline-flex;
+  align-items: center;
+  vertical-align: middle;
+  margin: 0;
 }
 
 .buttons:hover {

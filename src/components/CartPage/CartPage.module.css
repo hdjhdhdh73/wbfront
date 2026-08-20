@@ -1,3 +1,4 @@
+
 .container {
   max-width: 1000px;
   margin: 0 auto;
@@ -47,10 +48,11 @@
   padding: 40px 20px;
   border-bottom: 1px solid #f5f5f5;
   gap: 12px;
+  flex-wrap: wrap;
 }
 
 .itemName {
-  flex:1;
+  flex: 1;
   font-size: 16px;
   color: #020202;
 }
@@ -71,8 +73,10 @@
 
 .quantityButtons {
   display: flex;
-  align-items: center; 
-  gap:6px;
+  
+  gap: 6px;
+  flex-shrink: 0;
+  
 }
 
 .quantityButton {
@@ -86,10 +90,12 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  flex-shrink: 0;
 }
 
 .quantityValue {
   min-width: 20px;
+  margin-top: 5px;
   text-align: center;
   font-size: 15px;
 }
@@ -98,10 +104,14 @@
   background: none;
   border: 1px solid #e74c3c;
   color: #e74c3c;
-  padding: 5px 12px;
+  padding: 5px 16px;
   border-radius: 4px;
-  cursor: pointer; 
+  cursor: pointer;
   font-size: 13px;
+  flex-shrink: 0;
+  height: 30px;
+  display: flex;
+  align-items: center;
 }
 
 .deleteButton:hover {

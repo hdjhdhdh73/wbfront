@@ -1,26 +1,29 @@
 
 .card {
-  border: 1px solid #e0e0e0;
   background: white;
   border-radius: 8px;
-  overflow: hidden;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.1);
   transition: box-shadow 0.2s;
   display: flex;
   flex-direction: column;
-  height: 100%;
+  min-height: 350px;
 }
 
 .card:hover {
-  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
   transition: box-shadow 0.2s; 
 }
 
 .link {
   text-decoration: none;
   color: inherit;
-  flex: 1;
   display: flex;
   flex-direction: column;
+  flex: 1;
+}
+
+.content {
+  flex: 1;
 }
 
 .imageWrapper {
@@ -56,6 +59,11 @@
   text-overflow: ellipsis;
 }
 
+.buttonWrap {
+  flex-shrink: 0;
+  padding: 0 10px 10px;
+}
+
 .button {
   width: 100%;
   height: 60px;
@@ -66,16 +74,14 @@
   cursor: pointer;
   font-size: 14px;
   box-sizing: border-box;
-  margin-top: auto;
+  border-radius: 8px;
 }
-
 
 .button:hover {
   background: #3a2d8a;
 }
 
-/* :disabled = КНОПКА ЗАБЛОКИРОВАНА (когда товар добавлен) */
 .button:disabled {
-  background: #9b8fd4; /* ФОН: светло-фиолетовый (неактивная) */
-  cursor: default; /* КУРСОР: default = стрелка (нельзя кликнуть) */
+  background: #9b8fd4;
+  cursor: default;
 }

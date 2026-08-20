@@ -81,7 +81,7 @@ export function CartPage() {
     return (
       <div className={styles.empty}>
         <h2>Корзина пуста</h2>
-        <Link to="/">На главную</Link>
+        <Link to="/catalog">На главную</Link>
       </div>
     );
   }

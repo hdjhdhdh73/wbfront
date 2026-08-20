@@ -21,7 +21,7 @@ export function Header() {
   return (
     <header className={styles.header}>
       <div className={styles.container}>
-        <Link to="/" className={styles.logo}>WC</Link>
+        <Link to="/catalog" className={styles.logo}>WC</Link>
         <div className={styles.actions}>
           <Link to="/cart" className={styles.cartLink}>Корзина</Link>
           {isAuthenticated ? (

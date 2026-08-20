@@ -19,21 +19,22 @@ export function ProductCard({ product }: { product: Product }) {
     .catch((erorr) => { alert(erorr.message); })};
 };
   return (
-
     <div className={styles.card}>
       <Link to={"/product/" + product.id} className={styles.link}>
         <div className={styles.imageWrapper}>
-          <img src="/placeholder.png" alt={product.name} className={styles.image} />
+          <img src={`http://127.0.0.1:8000/image/${product.image_url}` || "/placeholder.png"} alt={product.image_url} className={styles.image} />
         </div>
-        <h3 className={styles.name}>{product.name}</h3>
-        <p className={styles.price}>{product.price} руб.</p>
-        <p className={styles.description}>{product.description}</p>
+        <div className={styles.content}>
+          <h3 className={styles.name}>{product.name}</h3>
+          <p className={styles.price}>{product.price} руб.</p>
+          <p className={styles.description}>{product.description}</p>
+        </div>
       </Link>
-
-      <button className={styles.button} onClick={handleClick} disabled={added}>
-        {added ? "Добавлено" : "В корзину"} 
-      </button>
+      <div className={styles.buttonWrap}>
+        <button className={styles.button} onClick={(e) => { e.preventDefault(); handleClick(); }} disabled={added}>
+          {added ? "Добавлено" : "В корзину"} 
+        </button>
+      </div>
     </div>
-
   );
 }

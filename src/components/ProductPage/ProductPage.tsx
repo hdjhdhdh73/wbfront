@@ -57,11 +57,11 @@ export function ProductPage() {
   return ( 
     <div className={styles.page}> 
       <div className={styles.container}>
-        <Link to="/" className={styles.link}>← Назад к каталогу</Link>
+        <Link to="/catalog" className={styles.link}>← Назад к каталогу</Link>
         <div className={styles.content_product}>
 
           <div className={styles.image}>
-            <img src="/placeholder.png" alt={product.name} className={styles.mainImage} />
+            <img src={`http://127.0.0.1:8000/image/${product.image_url}`} alt={product.name} className={styles.mainImage} />
           </div>
 
           <div className={styles.info_product}>
