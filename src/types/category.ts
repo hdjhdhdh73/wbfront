@@ -6,3 +6,18 @@ export interface Category {
 export interface CategoryCreate {
   name: string;
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
