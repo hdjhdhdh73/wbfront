@@ -10,7 +10,6 @@ export function LoginPage() {
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
-
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     setError("");
@@ -18,7 +17,6 @@ export function LoginPage() {
     loginUser({ email, password })
       .then((user_data) => {
         localStorage.setItem("userId", String(user_data.user_id));
-        
         if (user_data.role) {
            localStorage.setItem("userRole", user_data.role); 
           }
@@ -29,8 +27,6 @@ export function LoginPage() {
       })
       .finally(() => { setLoading(false); });
   };
-
-
   return (
     <main className={styles.page}> 
       <div className={styles.card}> 

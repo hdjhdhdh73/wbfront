@@ -6,13 +6,11 @@ import type { Product } from "../../types/product";
 import styles from "./ProductPage.module.css";
 
 export function ProductPage() {
-
   const product_id = useParams().id;
   const [product, setProduct] = useState<Product | null>(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
   const [added, setAdded] = useState(false);
-
   useEffect(() => {
     getProductById(Number(product_id))
       .then((data) => {
@@ -24,11 +22,8 @@ export function ProductPage() {
        setLoading(false); 
       });
   }, [product_id]);
-
-
   const handleAddToCart = () => {
     const userId = localStorage.getItem("userId");
-
     if (!userId) {
       alert("Сначала войдите в аккаунт");
     }
@@ -42,7 +37,6 @@ export function ProductPage() {
     }
   };
 
-
   if (loading) {
     return <div className={styles.container}>Загрузка...</div>; 
   }
@@ -52,8 +46,6 @@ export function ProductPage() {
   if (!product) {
     return <div className={styles.container}>Товар не найден</div>; 
   }
-
-  
   return ( 
     <div className={styles.page}> 
       <div className={styles.container}>

@@ -4,12 +4,10 @@ import { getCart, removeFromCart, updateCartItem } from "../../service/cart_serv
 import type { CartItem } from "../../types/cart";
 import styles from "./CartPage.module.css";
 export function CartPage() {
-
   const [cart, setCart] = useState<CartItem[]>([]);
   const [loading, setLoading] = useState(true);
   const [errorData, setError] = useState("");
   const navigate = useNavigate();
-
   useEffect(() => {
     const user_id = localStorage.getItem("userId");
     if (!user_id) {
@@ -27,7 +25,6 @@ export function CartPage() {
       });
 
   }, [navigate]);
-
   const handleRemove = (cartId: number) => {
     const user_id = localStorage.getItem("userId");
     if (!user_id) {
@@ -41,7 +38,6 @@ export function CartPage() {
         alert((err as Error).message);
       });
   };
-
   const handleQuantity = (cartID: number, change: number) => {
     const user_id = localStorage.getItem("userId");
     if (!user_id) {
@@ -57,11 +53,7 @@ export function CartPage() {
     };
     updateCartItem(cartID, Number(user_id), change_quantity)
       .then(() => {
-        setCart((listcart) =>
-          listcart.map((item) =>
-            item.id === cartID
-              ? { ...item, quantity: change_quantity, total_price: item.product_price * change_quantity }
-              : item
+        setCart((listcart) => listcart.map((item) => item.id === cartID ? { ...item, quantity: change_quantity, total_price: item.product_price * change_quantity } : item
           )
         );
       })
@@ -69,7 +61,6 @@ export function CartPage() {
         alert((error as Error).message);
       });
   };
-
   const total = cart.reduce((sum, item) => sum + item.total_price, 0);
   if (loading) {
     return <div className={styles.loading}>Загрузка...</div>;
@@ -85,7 +76,6 @@ export function CartPage() {
       </div>
     );
   }
-
   return (
 
     <div className={styles.container}>

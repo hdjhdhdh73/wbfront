@@ -8,7 +8,6 @@ import type { Product } from "../../types/product";
 import styles from "./CatalogPage.module.css";
 
 export function CatalogPage() {
-
   const [params] = useSearchParams();
   const categoryId = params.get("category_id") ? Number(params.get("category_id")) : undefined;
   const navigate = useNavigate();
@@ -17,13 +16,8 @@ export function CatalogPage() {
   const [searchText, setSearchText] = useState("");
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
-
-
   useEffect(() => { getCategories().then((data) =>
      setCategories(data)).catch(() => {})}, []);
-
-
-
   useEffect(() => {
      setLoading(true);
      setError("");
@@ -32,11 +26,9 @@ export function CatalogPage() {
          setLoading(false)})
       .catch((error) => { setError(error.message); setLoading(false)})
     }, [categoryId, searchText]);
-
   const selectCategory = (id: number) => {
     navigate("/catalog?category_id=" + id);
   };
-
 
   return (
     <main className={styles.page}>

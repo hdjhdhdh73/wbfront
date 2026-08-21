@@ -16,7 +16,6 @@ export function AdminPage() {
   const [cat_name, setCat_name] = useState("");
   const [selected_cat, setSelected_cat] = useState("");
   const navigate = useNavigate();
-
   useEffect(() => {
     const userId = localStorage.getItem("userId");
     if (!userId) {
@@ -26,7 +25,6 @@ export function AdminPage() {
     getProducts().then((data) => setProducts(data)).catch(() => {});
     getCategories().then((data) => setCategories(data)).catch(() => {});
   }, [navigate]);
-
   const handleSave = () => {
     const data = { name, price: Number(price), description, category_id: Number(selected_cat), image_url: imageUrl };
     createProduct(data).then((new_product) => {
@@ -37,13 +35,11 @@ export function AdminPage() {
     setDescription("");
     setImageUrl("");
   };
-
   const handleDelete = (id: number) => {
     deleteProduct(id).then(() => {
       setProducts((list) => list.filter((product) => product.id !== id));
     });
   };
-
   const handleAddCategory = () => {
     if(!cat_name){
       return;
@@ -52,13 +48,11 @@ export function AdminPage() {
       setCategories((list) => [...list, new_cat]);
       setCat_name("");
     });
-  };
-
+  }
   return (
     <div className={styles.container}>
       <h2>Админ-панель</h2>
       <button onClick={() => navigate("/")}>На главную</button>
-
       <h3>Товары</h3>
       <input type="text" placeholder="Название" value={name} onChange={(event) => setName(event.target.value)} />
       <input type="number" placeholder="Цена" value={price} onChange={(event) => setPrice(event.target.value)} />
@@ -69,7 +63,6 @@ export function AdminPage() {
         {categories.map((cat) => <option key={cat.id} value={cat.id}>{cat.name}</option>)}
       </select>
       <button className={styles.addButton} onClick={handleSave}>Добавить</button>
-
       <div className={styles.list}>
         {products.map((product) => (
           <div key={product.id} className={styles.item}>
@@ -80,13 +73,11 @@ export function AdminPage() {
           </div>
         ))}
       </div>
-
       <h3>Категории</h3>
       <div className={styles.cat_form}>
         <input type="text" placeholder="Название категории" value={cat_name} onChange={(event) => setCat_name(event.target.value)} />
         <button onClick={handleAddCategory}>Добавить</button>
       </div>
-
       <div className={styles.list}>
         {categories.map((cat) => (
           <div key={cat.id} className={styles.item}>
